@@ -1,4 +1,4 @@
-# Anaya Jewels
+# Neela Jewellary
 
 A jewellery e-commerce storefront built with React, React Router, and Tailwind CSS.
 
