@@ -4,7 +4,7 @@ A modern, responsive jewellery e-commerce website built with React.js. The proje
 
 ## 🚀 Live Demo
 
-🔗 **Live Website:** Add your deployed Vercel URL here
+🔗 **Live Website:**  URL here
 
 ## 📌 Project Overview
 
