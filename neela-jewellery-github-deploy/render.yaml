@@ -1,0 +1,52 @@
+services:
+  # 1. Backend Web Service (Node.js + Express)
+  - type: web
+    name: neela-jewellery-backend
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_HOST
+        fromDatabase:
+          name: neela-jewellery-db
+          property: host
+      - key: DB_USER
+        fromDatabase:
+          name: neela-jewellery-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: neela-jewellery-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: neela-jewellery-db
+          property: database
+      - key: DB_PORT
+        value: "5432"
+
+  # 2. Frontend Static Site (React)
+  - type: web
+    name: neela-jewellery-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: neela-jewellery-backend
+          property: url
+          append: /api
+
+databases:
+  # 3. PostgreSQL Database
+  - name: neela-jewellery-db
+    region: singapore
+    plan: free
