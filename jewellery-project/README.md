@@ -1,32 +1,114 @@
-# Neela Jewellary
+# 💎 Neela Jewellery
 
-A jewellery e-commerce storefront built with React, React Router, and Tailwind CSS.
+A modern, responsive jewellery e-commerce website built with React.js. The project focuses on creating a clean shopping experience with reusable components, product browsing, category filtering, product details, and cart management.
 
-## Features
-- Home, Shop (with category filter), Product detail, Cart, About, Contact
-- Cart state via React Context — persists while the tab is open
-- Fully responsive, keyboard-focus visible, respects reduced-motion
-- No external image dependencies — product art is rendered in CSS/SVG so it never breaks
+## 🚀 Live Demo
 
-## Run locally
+🔗 **Live Website:** Add your deployed Vercel URL here
+
+## 📌 Project Overview
+
+Neela Jewellery is a responsive e-commerce frontend designed for a jewellery business. It provides users with an intuitive interface to browse products, explore categories, view product details, and manage items in a shopping cart.
+
+## ✨ Features
+
+* 🏠 Responsive home page
+* 💍 Jewellery product catalogue
+* 🔎 Product/category filtering
+* 🛍️ Product detail pages
+* 🛒 Shopping cart functionality
+* 🧩 Reusable React components
+* 📱 Mobile-responsive design
+* 🧭 Client-side routing
+* 🎨 Tailwind CSS styling
+* ♿ Keyboard-focus and reduced-motion considerations
+* ⚡ Fast and responsive user interface
+
+## 🛠️ Technologies Used
+
+| Technology   | Purpose                |
+| ------------ | ---------------------- |
+| React.js     | Frontend development   |
+| React Router | Client-side navigation |
+| JavaScript   | Application logic      |
+| HTML5        | Page structure         |
+| CSS3         | Styling                |
+| Tailwind CSS | Responsive UI styling  |
+| React Icons  | UI icons               |
+| Vercel       | Deployment             |
+
+## 📂 Project Structure
+
+```text
+jewellery-project/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── data/
+│   └── App.js
+├── package.json
+├── tailwind.config.js
+└── vercel.json
 ```
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/nishandhineePalanivel/JEWELLARY-PROJECT.git
+```
+
+Navigate to the React project:
+
+```bash
+cd JEWELLARY-PROJECT/jewellery-project
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm start
 ```
 
-## Build
+The application will run locally at:
+
+```text
+http://localhost:3000
 ```
+
+## 🏗️ Production Build
+
+```bash
 npm run build
 ```
 
-## Deploy to Vercel
-1. Push this folder to a GitHub repo.
-2. Go to vercel.com → New Project → Import the repo.
-3. Framework preset: Create React App (auto-detected). No config needed —
-   `vercel.json` already handles client-side routing.
-4. Deploy.
+## 🎯 Future Improvements
 
-## Notes
-- Product data lives in `src/data/products.js` — edit that array to change the catalog.
-- Checkout button is a stub (shows an alert). Wire it to a real payment
-  provider (Razorpay, Stripe) before taking real orders.
+* Backend API integration
+* User authentication
+* Database integration
+* Real payment gateway integration
+* Order management
+* Admin dashboard
+* Product reviews and ratings
+* Wishlist functionality
+
+## 👩‍💻 Author
+
+**Nishandhinee Palanivel**
+
+B.E. Electronics and Communication Engineering
+
+GitHub: https://github.com/nishandhineePalanivel
+
+## 📄 License
+
+This project was developed for learning and portfolio purposes.
