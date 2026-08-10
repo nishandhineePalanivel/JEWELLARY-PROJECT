@@ -46,7 +46,8 @@ const fetchProductDetails = useCallback(async () => {
 
 useEffect(() => {
   fetchProductDetails();
-}, [fetchProductDetails]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [id]);
 
   if (loading) return <DetailSkeleton />;
 
