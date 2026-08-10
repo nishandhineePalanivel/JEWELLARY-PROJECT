@@ -14,9 +14,9 @@ export default function Orders() {
       .finally(() => setLoading(false));
   }, []);
 
-  const getStatusBadge = (status, type = 'order') => {
-    const isPay = type === 'payment';
-    const colors = {
+ 
+ const getStatusBadge = (status, type = 'order') => {
+const colors = {
       CONFIRMED: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',
       DELIVERED: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',
       PAID: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',

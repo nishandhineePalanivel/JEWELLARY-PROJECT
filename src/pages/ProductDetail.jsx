@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Heart, ShoppingBag, ArrowLeft, Star, ShieldCheck, Truck, RefreshCw, CheckCircle, AlertTriangle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -21,23 +21,32 @@ export default function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [toastMsg, setToastMsg] = useState('');
 
-  useEffect(() => {
-    fetchProductDetails();
-  }, [id]);
+const fetchProductDetails = useCallback(async () => {
+  setLoading(true);
 
-  const fetchProductDetails = async () => {
-    setLoading(true);
-    try {
-      const res = await api.get(`/products/${id}`);
-      setProduct(res.data);
-      const mainImg = res.data.images?.[0]?.image_url || res.data.images?.[0] || res.data.image_url;
-      setSelectedImage(mainImg);
-    } catch (e) {
-      console.warn('Failed to fetch product details');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await api.get(`/products/${id}`);
+    setProduct(res.data);
+
+    const mainImg =
+      res.data.images?.[0]?.image_url ||
+      res.data.images?.[0] ||
+      res.data.image_url;
+
+    setSelectedImage(mainImg);
+
+  } catch (e) {
+    console.warn('Failed to fetch product details');
+  } finally {
+    setLoading(false);
+  }
+
+}, [id]);
+
+
+useEffect(() => {
+  fetchProductDetails();
+}, [fetchProductDetails]);
 
   if (loading) return <DetailSkeleton />;
 
