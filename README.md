@@ -4,7 +4,7 @@
 
 Designed to reflect real-world e-commerce standards, the system enforces server-side order calculation, cryptographic payment verification, automated PDF tax invoice generation, and a comprehensive Executive Admin Portal.
 
-Url of neela jewelley https://jewellary-project-7g3z-git-main-nishandhinee.vercel.app/
+Url of neela jewelley https://neela-website-jewellary-project-git-main-nishandhinee.vercel.app/shop
 
 ## 🌟 Key Features
 
