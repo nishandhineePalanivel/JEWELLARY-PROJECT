@@ -5,6 +5,12 @@ import ProductCard from '../components/ProductCard';
 import { ProductSkeleton } from '../components/SkeletonLoader';
 import Toast from '../components/Toast';
 import api from '../services/api';
+import ring1 from '../assets/ring1.jpg';
+import necklaceImg from '../assets/necklace.jpg';
+import earringImg from '../assets/earring.jpg';
+import braceletImg from '../assets/bracelet.jpg';
+import bangleImg from '../assets/bangle.jpg';
+import pendantImg from '../assets/pendant.jpg';
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -19,17 +25,16 @@ export default function Home() {
   }, []);
 
   const categories = [
-    { name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=300&q=80', desc: 'Solitaires & Pavé Bands' },
-    { name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=300&q=80', desc: 'Chokers & Pendant Chains' },
-    { name: 'Earrings', image: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=300&q=80', desc: 'Ruby Drops & Pearl Studs' },
-    { name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=300&q=80', desc: 'Diamond Tennis Lines' },
-    { name: 'Bangles', image: 'https://images.unsplash.com/photo-1601821324082-c6193f00a50a?auto=format&fit=crop&w=300&q=80', desc: 'Hand-Engraved 22k Gold' },
-    { name: 'Pendants', image: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=300&q=80', desc: 'Divine Temple Artistry' }
+    { name: 'Rings', image: ring1, desc: 'Solitaires & Pavé Bands' },
+    { name: 'Necklaces', image: necklaceImg, desc: 'Chokers & Pendant Chains' },
+    { name: 'Earrings', image: earringImg, desc: 'Ruby Drops & Pearl Studs' },
+    { name: 'Bracelets', image: braceletImg, desc: 'Diamond Tennis Lines' },
+    { name: 'Bangles', image: bangleImg, desc: 'Hand-Engraved 22k Gold' },
+    { name: 'Pendants', image: pendantImg, desc: 'Divine Temple Artistry' },
   ];
 
   return (
     <div className="min-h-screen text-ivory">
-      {/* Toast Alert */}
       <Toast message={toastMsg} onClose={() => setToastMsg('')} />
 
       {/* Hero Section */}
@@ -83,13 +88,13 @@ export default function Home() {
             <Link
               key={cat.name}
               to={`/shop?category=${cat.name}`}
-              className="group relative h-32 rounded-2x1 overflow-hidden border border-gold/20 hover:border-gold transition-all shadow-lg"
+              className="group relative h-44 rounded-2xl overflow-hidden border border-gold/20 hover:border-gold transition-all shadow-lg"
             >
               <img
-  src={cat.image}
-  alt={cat.name}
-  className="w-16 h-16 object-contain mx-auto mt-4 group-hover:scale-110 transition-transform duration-700"
-/>
+                src={cat.image}
+                alt={cat.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent flex flex-col justify-end p-4 text-center">
                 <h3 className="font-serif font-bold text-lg text-gold group-hover:text-white transition-colors">{cat.name}</h3>
                 <p className="text-[10px] text-ivory/70 line-clamp-1">{cat.desc}</p>
