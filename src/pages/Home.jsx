@@ -83,7 +83,7 @@ export default function Home() {
             <Link
               key={cat.name}
               to={`/shop?category=${cat.name}`}
-              className="group relative h-64 rounded-2xl overflow-hidden border border-gold/20 hover:border-gold transition-all shadow-lg"
+              className="group relative h-44 rounded-2xl overflow-hidden border border-gold/20 hover:border-gold transition-all shadow-lg"
             >
               <img
                 src={cat.image}
