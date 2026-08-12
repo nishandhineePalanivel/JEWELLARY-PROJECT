@@ -54,7 +54,7 @@ const imageUrl =
       </button>
 
       {/* Product Image & Swatch Preview */}
-      <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-gradient-to-br from-gold/5 to-transparent">
+      <Link to={`/product/${product.id}`} className="block relative h-40 overflow-hidden bg-gradient-to-br from-gold/5 to-transparent">
         {imageUrl ? (
           <img
             src={imageUrl}
