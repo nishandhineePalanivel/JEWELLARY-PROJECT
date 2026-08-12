@@ -107,7 +107,7 @@ const memoryDb = {
       rating: 5.0,
       is_featured: true,
       images: [
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemrDwoaMFD6nxxxKYo4QQiPc_HNzI28bzk-qLCCF2IZ50YzzqQVcHi1w&s=10'
+       'https://manubhai.in/wp-content/uploads/2026/04/DHBD07783-1024x1024.jpg'
       ]
     },
     {
