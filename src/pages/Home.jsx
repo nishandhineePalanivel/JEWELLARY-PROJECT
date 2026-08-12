@@ -86,10 +86,10 @@ export default function Home() {
               className="group relative h-32 rounded-2x1 overflow-hidden border border-gold/20 hover:border-gold transition-all shadow-lg"
             >
               <img
-                src={cat.image}
-                alt={cat.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75"
-              />
+  src={cat.image}
+  alt={cat.name}
+  className="w-16 h-16 object-contain mx-auto mt-4 group-hover:scale-110 transition-transform duration-700"
+/>
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent flex flex-col justify-end p-4 text-center">
                 <h3 className="font-serif font-bold text-lg text-gold group-hover:text-white transition-colors">{cat.name}</h3>
                 <p className="text-[10px] text-ivory/70 line-clamp-1">{cat.desc}</p>
