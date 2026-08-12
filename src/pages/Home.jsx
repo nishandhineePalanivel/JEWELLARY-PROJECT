@@ -23,7 +23,7 @@ export default function Home() {
     { name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80', desc: 'Chokers & Pendant Chains' },
     { name: 'Earrings', image: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80', desc: 'Ruby Drops & Pearl Studs' },
     { name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=600&q=80', desc: 'Diamond Tennis Lines' },
-    { name: 'Bangles', image: 'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=600&q=80', desc: 'Hand-Engraved 22k Gold' },
+    { name: { name: 'Bangles', image: 'https://images.unsplash.com/photo-1601821324082-c6193f00a50a?auto=format&fit=crop&w=600&q=80', desc: 'Hand-Engraved 22k Gold' },
     { name: 'Pendants', image: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=600&q=80', desc: 'Divine Temple Artistry' }
   ];
 
