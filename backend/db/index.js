@@ -107,7 +107,7 @@ const memoryDb = {
       rating: 5.0,
       is_featured: true,
       images: [
-        'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=800&q=80'
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTemrDwoaMFD6nxxxKYo4QQiPc_HNzI28bzk-qLCCF2IZ50YzzqQVcHi1w&s=10'
       ]
     },
     {
