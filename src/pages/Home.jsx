@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard';
 import { ProductSkeleton } from '../components/SkeletonLoader';
 import Toast from '../components/Toast';
 import api from '../services/api';
+
 const categories = [
   { 
     name: 'Rings', 
@@ -49,15 +50,6 @@ export default function Home() {
       .catch(e => console.warn('Failed to fetch featured products'))
       .finally(() => setLoading(false));
   }, []);
-
-  const categories = [
-    { name: 'Rings', image: ring1, desc: 'Solitaires & Pavé Bands' },
-    { name: 'Necklaces', image: necklaceImg, desc: 'Chokers & Pendant Chains' },
-    { name: 'Earrings', image: earringImg, desc: 'Ruby Drops & Pearl Studs' },
-    { name: 'Bracelets', image: braceletImg, desc: 'Diamond Tennis Lines' },
-    { name: 'Bangles', image: bangleImg, desc: 'Hand-Engraved 22k Gold' },
-    { name: 'Pendants', image: pendantImg, desc: 'Divine Temple Artistry' },
-  ];
 
   return (
     <div className="min-h-screen text-ivory">
