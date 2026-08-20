@@ -1,74 +1,73 @@
-# 💎 Neela Jewellery — Realistic Full-Stack E-Commerce Platform
+💎 Neela Jewellery — Full-Stack E-Commerce Platform
 
-**Neela Jewellery** is an interview-ready, full-stack luxury jewellery e-commerce application built with **React.js**, **Node.js/Express**, **PostgreSQL**, **JWT Authentication**, and integrated payment gateways (**Razorpay TEST Mode**, **Manual UPI Verification**, and **Cash on Delivery**).
+A production-grade jewellery e-commerce application built to real-world standards — covering customer shopping experience, secure multi-gateway payments, automated billing, and an executive admin portal.
 
-Designed to reflect real-world e-commerce standards, the system enforces server-side order calculation, cryptographic payment verification, automated PDF tax invoice generation, and a comprehensive Executive Admin Portal.
+Live Demo: neela-jewellery.vercel.app
 
-Url of neela jewelley https://neela-website-jewellary-project-git-main-nishandhinee.vercel.app/shop
+Tech Stack
+Layer	Technologies
+Frontend	React 18, React Router v6, Tailwind CSS, Axios, Lucide Icons
+Backend	Node.js, Express.js, JWT, bcryptjs, Helmet, CORS, PDFKit
+Database	PostgreSQL — 10 tables with relational schema, indexes, and constraints
+Payments	Razorpay SDK (TEST MODE), Manual UPI QR, Cash on Delivery
+Deployment	Vercel (frontend) · Render via render.yaml IaC (backend)
+Features
+Customer Experience
+Product catalog with category filters (Rings, Necklaces, Earrings, Bracelets, Bangles, Pendants), live keyword search, price range filter, and sorting
+Product detail page: multi-image gallery, SKU, stock count, net gold weight, material specs, quantity controls, wishlist toggle, Quick Add & Buy Now
+Persistent cart with server-calculated subtotal, 3% GST, insured shipping, and grand total
+Persistent wishlist with one-click Move to Cart
+Payment Gateways
+Razorpay (TEST MODE) — Server-side order creation + HMAC-SHA256 cryptographic signature verification before marking orders as PAID
+Manual UPI / Bank Transfer — Dynamic QR code generator, customer submits UTR reference; order placed under PAYMENT_PENDING_VERIFICATION for admin review
+Cash on Delivery — Order confirmed directly with PENDING payment status
+Order Tracking & Billing
+Live 6-stage fulfillment progress: PENDING → CONFIRMED → PROCESSING → SHIPPED → OUT FOR DELIVERY → DELIVERED
+Automated PDF tax invoice generation with company branding, invoice number, itemized breakdown, GST, and payment details
+Executive Admin Portal (/admin)
+Dashboard: real-time revenue analytics, total orders, registered customers, low-stock alerts, recent orders
+Product management: add, edit, adjust stock and pricing, delete
+Order fulfillment queue: update milestones, download invoices
+Payment verification queue: review customer UTR/UPI references, approve or reject with one click
+Security
+JWT authentication with 7-day expiration and role-based middleware (authenticateToken, requireAdmin)
+bcrypt password hashing (10 rounds)
+Server-side order total calculation — client cannot tamper with prices
+Cryptographic Razorpay payment signature verification
+Demo Credentials
+Role	Email	Password
+Customer	priya@example.com	customer123
+Admin	admin@neelajewellery.com	admin123
 
-## 🌟 Key Features
+One-click Fill Customer / Fill Admin buttons available on the /login screen.
 
-### 🛍️ Customer Shopping Experience
-- **Luxury Aesthetic**: Modern dark/gold theme (`ink`, `ivory`, `gold`), smooth micro-animations, skeleton loaders, and toast alerts.
-- **Product Catalog**: Filter by categories (*Rings, Necklaces, Earrings, Bracelets, Bangles, Pendants*), live keyword search, price range filter, and sorting (Price Low/High, Rating, Newest).
-- **Product Detail**: Multi-image thumbnail gallery, SKU, stock count, net gold weight (grams), material specs, quantity controls, Wishlist heart toggle, Quick Add & Buy Now actions, and customer review submission.
-- **Persistent Wishlist**: Saved items grid with 1-click *"Move to Cart"* action.
-- **Persistent Cart & Cost Breakdown**: Server-calculated subtotal, discount savings, **3% GST** (Indian gold jewellery tax), insured shipping calculation, and grand total.
+Project Structure
+JEWELLARY-PROJECT/
+├── backend/          # Node.js + Express REST API
+├── src/              # React 18 frontend
+├── public/
+├── render.yaml       # Render IaC deployment config
+├── vercel.json       # Vercel routing config
+└── package.json
+Local Setup
+bash
+# Clone the repo
+git clone https://github.com/nishandhineePalanivel/JEWELLARY-PROJECT.git
+cd JEWELLARY-PROJECT
 
----
+# Frontend
+npm install
+npm run dev
 
-### 💳 Payment Gateways & Security
-1. **Razorpay TEST MODE**:
-   - Server-side order creation via Razorpay SDK.
-   - Cryptographic HMAC-SHA256 signature verification before marking orders as `PAID`.
-2. **Manual UPI / Bank Transfer**:
-   - Dynamic QR Code generator & UPI ID (`neela.jewellery@upi`).
-   - Customer submits UTR/UPI transaction reference number.
-   - Order is placed under `PAYMENT_PENDING_VERIFICATION` status for Admin review.
-3. **Cash on Delivery (COD)**:
-   - Sets payment status to `PENDING` and order status to `CONFIRMED`.
+# Backend (in a separate terminal)
+cd backend
+npm install
+node index.js
 
----
+Set your environment variables for PostgreSQL connection string and Razorpay keys before running the backend.
 
-### 📜 Order Tracking & Billing
-- **Live Fulfillment Progress**: Track order progress across 6 milestones (*PENDING ➔ CONFIRMED ➔ PROCESSING ➔ SHIPPED ➔ OUT FOR DELIVERY ➔ DELIVERED*).
-- **PDF Tax Invoice Download**: Automated PDF invoice generation containing company branding, invoice number, customer address, itemized breakdown, tax breakdown, and payment details.
+What I Built & Learned
 
----
+This project started as a React frontend internship deliverable. I extended it into a full-stack system to understand how real e-commerce platforms work end-to-end — from JWT auth flows and role-based access, to server-side price validation, to cryptographic payment verification, to automated PDF invoice generation. Deploying both layers independently (Vercel + Render via IaC) gave me hands-on experience with production-grade split deployment.
 
-### 🛡️ Executive Admin Portal (`/admin`)
-- **Executive Dashboard**: Real-time revenue analytics, total orders, registered customer counts, low-stock alert warnings, and recent orders.
-- **Product Management (`/admin/products`)**: Add new jewellery pieces, edit details, inline stock count adjuster, price/discount adjuster, and deletion.
-- **Order Fulfillment Queue (`/admin/orders`)**: View orders, update fulfillment milestones, and download invoices.
-- **Payment Verification Queue (`/admin/payments`)**: Review customer-submitted UTR / UPI reference numbers with 1-click **Approve Payment** or **Reject Payment**.
-
----
-
-## 🛠️ Technology Stack
-
-| Layer | Technologies Used |
-| :--- | :--- |
-| **Frontend** | React 18, React Router v6, Tailwind CSS, Lucide Icons, Axios |
-| **Backend** | Node.js, Express.js, JWT, bcryptjs, Helmet, CORS, PDFKit |
-| **Database** | PostgreSQL (Relational schema with 10 tables, indexes, constraints) |
-| **Payment** | Razorpay SDK (TEST MODE), Manual UPI QR, Cash on Delivery |
-| **Deployment**| Render (Blueprint Infrastructure as Code via `render.yaml`) |
-
----
-
-## 🔒 Security Architecture
-- **JWT Authentication**: Token-based security with 7-day expiration and role-based middleware (`authenticateToken`, `requireAdmin`).
-- **Password Protection**: Passwords hashed using `bcrypt` (10 rounds).
-- **Server Price Validation**: All order totals are calculated strictly on the backend to prevent client-side price tampering.
-- **Cryptographic Signature Verification**: Razorpay payment responses are verified server-side using secret keys.
-
----
-
-## ⚡ Demo Credentials
-
-| Role | Email | Password |
-| :--- | :--- | :--- |
-| **Customer** | `priya@example.com` | `customer123` |
-| **Admin** | `admin@neelajewellery.com` | `admin123` |
-
-*(Convenient 1-click **Fill Customer** and **Fill Admin** buttons are provided directly on the `/login` screen).*
+Built by Nishandhinee P — ECE undergraduate, Coimbatore
