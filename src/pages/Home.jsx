@@ -5,12 +5,38 @@ import ProductCard from '../components/ProductCard';
 import { ProductSkeleton } from '../components/SkeletonLoader';
 import Toast from '../components/Toast';
 import api from '../services/api';
-import ring1 from '../assets/ring1.jpg';
-import necklaceImg from '../assets/necklace.jpg';
-import earringImg from '../assets/earring.jpg';
-import braceletImg from '../assets/bracelet.jpg';
-import bangleImg from '../assets/bangle.jpg';
-import pendantImg from '../assets/pendant.jpg';
+const categories = [
+  { 
+    name: 'Rings', 
+    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80', 
+    desc: 'Solitaires & Pavé Bands' 
+  },
+  { 
+    name: 'Necklaces', 
+    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80', 
+    desc: 'Chokers & Pendant Chains' 
+  },
+  { 
+    name: 'Earrings', 
+    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80', 
+    desc: 'Ruby Drops & Pearl Studs' 
+  },
+  { 
+    name: 'Bracelets', 
+    image: 'https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=400&q=80', 
+    desc: 'Diamond Tennis Lines' 
+  },
+  { 
+    name: 'Bangles', 
+    image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80', 
+    desc: 'Hand-Engraved 22k Gold' 
+  },
+  { 
+    name: 'Pendants', 
+    image: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&q=80', 
+    desc: 'Divine Temple Artistry' 
+  },
+];
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
