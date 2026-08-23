@@ -2,7 +2,7 @@
 
 A production-grade jewellery e-commerce application built to real-world standards — covering customer shopping experience, secure multi-gateway payments, automated billing, and an executive admin portal.
 
-**Live Demo:** [Neela Jewellery](https://jewellary-project-7g3z-git-main-nishandhinee.vercel.app/)
+**Live Demo:** [Neela Jewellery](https://neela-jewellery-plum.vercel.app/)
 
 ---
 
