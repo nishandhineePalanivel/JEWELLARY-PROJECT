@@ -2,7 +2,7 @@ import ring1 from '../assets/ring1.jpg';
 import ring2 from '../assets/ring2.jpg';
 import ring3 from '../assets/ring3.jpg';
 import necklaceImg from '../assets/necklace.jpg';
-import earringImg from '../assets/earring.jpg';
+import earringImg from '../assets/earrings.jpg';
 import braceletImg from '../assets/bracelet.jpg';
 import bangleImg from '../assets/bangle.jpg';
 import pendantImg from '../assets/pendant.jpg';
