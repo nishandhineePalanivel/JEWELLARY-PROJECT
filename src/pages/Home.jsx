@@ -1,102 +1,134 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, ShieldCheck, Gem } from 'lucide-react';
+
 import ProductCard from '../components/ProductCard';
 import { ProductSkeleton } from '../components/SkeletonLoader';
 import Toast from '../components/Toast';
 import api from '../services/api';
 
-// Category data
+// ============================================================
+// LOCAL BRACELET IMAGE
+// Make sure this file exists:
+// src/assets/bracelets.jpg
+// ============================================================
+import braceletImage from '../assets/bracelets.jpg';
+
+// ============================================================
+// CATEGORY DATA
+// ============================================================
 const categories = [
   {
     name: 'Rings',
     image:
-      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80',
+      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80',
     desc: 'Solitaires & Pavé Bands',
   },
+
   {
     name: 'Necklaces',
     image:
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80',
+      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80',
     desc: 'Chokers & Pendant Chains',
   },
+
   {
     name: 'Earrings',
     image:
-      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&q=80',
+      'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80',
     desc: 'Ruby Drops & Pearl Studs',
   },
+
   {
     name: 'Bracelets',
-    image:
-      'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&q=80',
+    image: braceletImage,
     desc: 'Diamond Tennis Lines',
   },
+
   {
     name: 'Bangles',
     image:
-      'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80',
+      'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80',
     desc: 'Hand-Engraved 22k Gold',
   },
+
   {
     name: 'Pendants',
     image:
-      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&q=80',
+      'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=800&q=80',
     desc: 'Divine Temple Artistry',
   },
 ];
 
-// Fallback image in case an external image fails
-const fallbackCategoryImage =
-  'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80';
+// ============================================================
+// FALLBACK IMAGE
+// ============================================================
+const fallbackImage =
+  'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80';
 
+// ============================================================
+// HOME COMPONENT
+// ============================================================
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [toastMsg, setToastMsg] = useState('');
 
-  // Fetch featured products
+  // ==========================================================
+  // GET FEATURED PRODUCTS
+  // ==========================================================
   useEffect(() => {
     api
       .get('/products?featured=true')
       .then((res) => {
-        setFeaturedProducts(res.data);
+        setFeaturedProducts(res.data || []);
       })
-      .catch((e) => {
-        console.warn('Failed to fetch featured products', e);
+      .catch((error) => {
+        console.warn('Failed to fetch featured products:', error);
+        setFeaturedProducts([]);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
+  // ==========================================================
+  // IMAGE ERROR HANDLER
+  // ==========================================================
+  const handleImageError = (event) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = fallbackImage;
+  };
+
   return (
     <div className="min-h-screen text-ivory">
 
-      {/* Toast */}
+      {/* ======================================================
+          TOAST
+      ======================================================= */}
       <Toast
         message={toastMsg}
         onClose={() => setToastMsg('')}
       />
 
-      {/* =========================================================
+      {/* ======================================================
           HERO SECTION
-      ========================================================== */}
+      ======================================================= */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-ink via-amber-950/20 to-ink">
 
         {/* Background Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(232,200,126,0.15)_0,transparent_70%)] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(232,200,126,0.15)_0,transparent_70%)] pointer-events-none" />
 
         {/* Hero Content */}
         <div className="max-w-5xl mx-auto px-4 py-20 text-center relative z-10 space-y-6">
 
-          {/* Badge */}
+          {/* Collection Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 text-gold text-xs font-semibold uppercase tracking-widest animate-pulse">
             <Sparkles className="w-4 h-4 text-gold" />
             The Royal Solitaire Collection 2026
           </div>
 
-          {/* Heading */}
+          {/* Main Heading */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-ivory tracking-wide leading-tight">
             Timeless Luxury,
             <br />
@@ -132,13 +164,14 @@ export default function Home() {
             >
               View Solitaires
             </Link>
+
           </div>
         </div>
       </section>
 
-      {/* =========================================================
-          FEATURED CATEGORIES
-      ========================================================== */}
+      {/* ======================================================
+          CATEGORY SECTION
+      ======================================================= */}
       <section className="max-w-7xl mx-auto px-4 py-16">
 
         {/* Section Heading */}
@@ -151,9 +184,10 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-serif text-ivory">
             Explore by Category
           </h2>
+
         </div>
 
-        {/* Categories Grid */}
+        {/* Category Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 
           {categories.map((cat) => (
@@ -169,13 +203,10 @@ export default function Home() {
                 alt={cat.name}
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = fallbackCategoryImage;
-                }}
+                onError={handleImageError}
               />
 
-              {/* Dark Gradient Overlay */}
+              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent flex flex-col justify-end p-4 text-center">
 
                 {/* Category Name */}
@@ -187,21 +218,24 @@ export default function Home() {
                 <p className="text-[10px] text-ivory/70 line-clamp-1">
                   {cat.desc}
                 </p>
+
               </div>
             </Link>
           ))}
+
         </div>
       </section>
 
-      {/* =========================================================
+      {/* ======================================================
           FEATURED PRODUCTS
-      ========================================================== */}
+      ======================================================= */}
       <section className="max-w-7xl mx-auto px-4 py-16">
 
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row justify-between items-end mb-10 pb-4 border-b border-gold/20">
 
           <div>
+
             <span className="text-xs uppercase tracking-[0.3em] text-gold font-semibold block mb-1">
               Masterpiece Gallery
             </span>
@@ -209,9 +243,10 @@ export default function Home() {
             <h2 className="text-3xl font-serif text-ivory">
               Signature Pieces
             </h2>
+
           </div>
 
-          {/* Full Catalog Link */}
+          {/* Catalog Link */}
           <Link
             to="/shop"
             className="text-xs font-semibold text-gold hover:underline flex items-center gap-1 mt-2 sm:mt-0"
@@ -219,21 +254,28 @@ export default function Home() {
             View Full Catalog ({featuredProducts.length}+)
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
+
         </div>
 
-        {/* Loading State */}
-        {loading ? (
+        {/* ====================================================
+            LOADING STATE
+        ===================================================== */}
+        {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            {[...Array(4)].map((_, i) => (
-              <ProductSkeleton key={i} />
+            {[...Array(4)].map((_, index) => (
+              <ProductSkeleton key={index} />
             ))}
 
           </div>
-        ) : featuredProducts.length === 0 ? (
+        )}
 
-          /* No Products */
-          <div className="text-center py-16 border border-gold/10 rounded-2xl">
+        {/* ====================================================
+            EMPTY STATE
+        ===================================================== */}
+        {!loading && featuredProducts.length === 0 && (
+          <div className="text-center py-16 border border-gold/20 rounded-2xl">
+
             <Gem className="w-10 h-10 text-gold mx-auto mb-4" />
 
             <h3 className="text-xl font-serif text-ivory mb-2">
@@ -243,28 +285,32 @@ export default function Home() {
             <p className="text-sm text-ivory/50">
               Please check back soon for our latest collection.
             </p>
+
           </div>
+        )}
 
-        ) : (
-
-          /* Products Grid */
+        {/* ====================================================
+            PRODUCT GRID
+        ===================================================== */}
+        {!loading && featuredProducts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {featuredProducts.slice(0, 8).map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                onToast={(msg) => setToastMsg(msg)}
+                onToast={(message) => setToastMsg(message)}
               />
             ))}
 
           </div>
         )}
+
       </section>
 
-      {/* =========================================================
-          CRAFTSMANSHIP & GUARANTEE
-      ========================================================== */}
+      {/* ======================================================
+          CRAFTSMANSHIP & GUARANTEE SECTION
+      ======================================================= */}
       <section className="bg-gradient-to-r from-amber-950/40 via-ink to-amber-950/40 border-y border-gold/20 py-16">
 
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
@@ -287,16 +333,19 @@ export default function Home() {
           {/* Guarantees */}
           <div className="flex flex-wrap justify-center gap-8 text-xs font-semibold text-gold pt-2">
 
+            {/* Certified */}
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" />
               100% Certified
             </span>
 
+            {/* Delivery */}
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" />
               Insured Delivery
             </span>
 
+            {/* Buyback */}
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4" />
               Lifetime Buyback
