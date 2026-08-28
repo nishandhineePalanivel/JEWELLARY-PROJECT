@@ -1,11 +1,11 @@
-import ring1 from '../assets/ring1.jpg';
-import ring2 from '../assets/ring2.jpg';
-import ring3 from '../assets/ring3.jpg';
-import necklaceImg from '../assets/necklace.jpg';
-img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=800&q=80" />
-import braceletImg from '../assets/bracelet.jpg';
-import bangleImg from '../assets/bangle.jpg';
-import pendantImg from '../assets/pendant.jpg';
+const ring1 = 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80';
+const ring2 = 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80';
+const ring3 = 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80';
+const necklaceImg = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80';
+const earringImg = 'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=800&q=80';
+const braceletImg = 'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=800&q=80';
+const bangleImg = 'https://images.unsplash.com/photo-1611591475777-233cd7a772b1?auto=format&fit=crop&w=800&q=80';
+const pendantImg = 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=800&q=80';
 
 const products = [
   { id: 'p01', name: 'Vellai Solitaire Ring', category: 'Rings', price: 24999, material: '18k Gold · 0.5ct Diamond', swatch: '#E8C87E', image: ring1, description: 'A single round-brilliant stone set high on a tapered gold band.' },
