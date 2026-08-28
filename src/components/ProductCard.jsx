@@ -2,7 +2,7 @@ import ring1 from '../assets/ring1.jpg';
 import ring2 from '../assets/ring2.jpg';
 import ring3 from '../assets/ring3.jpg';
 import necklaceImg from '../assets/necklace.jpg';
-import earringImg from '../assets/earrings.jpg';
+img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=800&q=80" />
 import braceletImg from '../assets/bracelet.jpg';
 import bangleImg from '../assets/bangle.jpg';
 import pendantImg from '../assets/pendant.jpg';
